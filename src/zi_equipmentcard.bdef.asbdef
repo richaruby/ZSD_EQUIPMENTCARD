@@ -1,0 +1,45 @@
+managed implementation in class zbp_i_equipmentcard unique;
+strict ( 2 );
+
+define behavior for ZI_EQUIPMENTCARD alias EQP_DEV//alias <alias_name>
+persistent table zdb_equipment_n
+lock master
+authorization master ( instance )
+//etag master <field_name>\
+
+{
+  create;
+  update;
+  delete;
+  field ( readonly : create) equipment;
+  field ( readonly : update ) kunnr ,vin;
+  determination get_equipment on save { create;  }
+
+validation validate_customer_vin on save { create; update; }
+
+ determination derive_telephone on save{ create; update; }
+
+  determination derive_vehicle_details on save{ create;  update; }
+
+  mapping for zdb_equipment_n {
+  Equipment = equipment;
+  Kunnr  = kunnr;
+  Vin = vin;
+  Matnr = matnr;
+ Vehcile_no   = Vehcile_no;
+  Tele_no         = tele_no;
+  Sold_flg        =  sold_flg   ;
+  Status          = status  ;
+  Created_by      =  created_by    ;
+  Created_at      = created_at   ;
+  Last_changed_by = last_changed_by;
+  Last_changed_at = last_changed_at;
+  Color         = color;
+  engine        = engine;
+  fuel          = fuel;
+  transmission  = transmission;
+  batch         = batch;
+
+  }
+
+}

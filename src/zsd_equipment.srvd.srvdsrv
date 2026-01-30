@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service definition for Equipment card'
+define service ZSD_EQUIPMENT {
+  expose ZC_EQUIPMENTCARD;
+}

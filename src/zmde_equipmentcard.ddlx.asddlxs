@@ -1,0 +1,88 @@
+@Metadata.layer: #CORE
+@UI:{
+    headerInfo:{
+    typeName: 'Equipment card master',
+    typeNamePlural: 'Equipment card master' },
+        presentationVariant: [{ sortOrder: [{ by: 'equipment', direction: #DESC  }] }]
+    }
+annotate entity ZC_EQUIPMENTCARD with
+{
+  @UI.facet: [
+   {
+     id      : 'Header',
+     purpose : #STANDARD,
+     type    : #IDENTIFICATION_REFERENCE,
+     label   : 'Equipment Card Master',
+     position: 10
+   }
+  ]
+
+
+
+
+  @Consumption.valueHelpDefinition: [
+  {
+   entity: { name: 'I_Customer', element: 'Customer' },
+   additionalBinding: [
+     {
+       localElement: 'kunnr',
+       element: 'Customer'
+     }
+   ]
+  }
+  ]
+
+
+  @UI: { lineItem:[{ position: 20 }],
+         identification:[{ position: 20 }],
+         selectionField:[{ position: 20 }] }
+
+  kunnr;
+
+  @UI: { lineItem:[{ position: 40 }],
+         identification:[{ position: 40 }],
+         selectionField:[{ position: 40 }] }
+  vin;
+  
+    @UI: { lineItem:[{ position: 10 , label : 'Equipment Number' }],
+         identification:[{ position: 10  , label : 'Equipment Number' }] }
+  equipment;
+
+//  @Consumption.valueHelpDefinition: [
+//    {
+//      entity: { name: 'I_Product', element: 'Product' },
+//      additionalBinding: [
+//        {
+//          localElement: 'matnr',
+//          element: 'Product'
+//        }
+//      ]
+//    }
+//  ]
+@UI: {
+  lineItem:[{ position: 30 }],
+  identification:[{ position: 30 }],
+  selectionField:[{ position: 30 }]
+}
+matnr;
+
+  @UI: { lineItem:[{ position: 110 }],
+         identification:[{ position: 110 }] }
+  vehcile_no;
+
+  @UI: { lineItem:[{ position: 60  , label : 'Telephone no.'}],
+         identification:[{ position: 60 , label : 'Telephone no.' }] }
+  tele_no;
+
+  @UI: { lineItem:[{ position: 70  }],
+         identification:[{ position: 70 }] }
+  created_by;
+
+  @UI: { lineItem:[{ position: 80 }],
+         identification:[{ position: 80 }] }
+  created_at;
+
+
+
+
+}
